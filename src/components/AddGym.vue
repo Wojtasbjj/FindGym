@@ -7,6 +7,7 @@
             <input v-model="mainCoach" type="text" name="coach" placeholder="Main Coach">
             <textarea v-model="description" name="desc" placeholder="Description GYM" cols="30" rows="10"></textarea>
             <button @click.prevent="sendData()">ADD</button>
+            <h2 v-if="addedSuccess">Gym Added Sucesfully</h2>
         </form>
     </div>
 </template>
@@ -19,7 +20,8 @@ export default {
             city: '',
             gymStreet: '',
             mainCoach: '',
-            description: ''
+            description: '',
+            addedSuccess: false
         }
     },
     methods: {
@@ -37,6 +39,12 @@ export default {
                     description: this.description
                 })
             })
+            this.gymName = '';
+            this.city = '';
+            this.gymStreet = '';
+            this.mainCoach = '';
+            this.description = '';
+            this.addedSuccess = true;
         }
     }
 }

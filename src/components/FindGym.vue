@@ -1,9 +1,6 @@
 <template>
     <div class="co">
-        <ul id="gyms" class="gyms">
-            <li></li>
-        </ul>
-        <button @click="getData">Load All Gyms</button>
+        <ul id="gyms" class="gyms"></ul>
     </div>
 </template>
 
@@ -47,6 +44,9 @@ export default {
 
             })
         }
+    },
+    mounted() {
+       this.getData(); 
     }
 }
 </script>
