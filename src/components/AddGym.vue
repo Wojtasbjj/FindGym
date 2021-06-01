@@ -29,13 +29,13 @@ export default {
                 headers: {
                     'Content-type': 'application/json'
                 },
-                body: {
+                body: JSON.stringify({
                     gymName: this.gymName,
                     city: this.city,
                     gymStreet: this.gymStreet,
                     mainCoach: this.mainCoach,
                     description: this.description
-                }
+                })
             })
         }
     }
