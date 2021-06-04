@@ -6,9 +6,8 @@
 </template>
 
 <style scoped>
-    .find, .add {
-        border: solid 1px black;
-        margin: 2em;
+    .container {
+        display: flex;
     }
 </style>
 

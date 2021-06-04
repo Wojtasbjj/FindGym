@@ -7,6 +7,7 @@
             <input v-model="mainCoach" type="text" name="coach" placeholder="Main Coach">
             <textarea v-model="description" name="desc" placeholder="Description GYM" cols="30" rows="10"></textarea>
             <button @click.prevent="sendData()">ADD</button>
+            <router-link class="back" to="/">back</router-link>
             <h2 v-if="addedSuccess">Gym Added Sucesfully</h2>
         </form>
     </div>
@@ -49,4 +50,17 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+    h2 {
+        color: white;
+        background: green;
+        border: solid 1px green;
+        border-radius: 10px;
+        margin: 0 auto;
+        width: 90%;
+        margin-top: 1em;
+    }
+</style>
 

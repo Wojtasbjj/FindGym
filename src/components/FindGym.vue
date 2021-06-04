@@ -1,5 +1,8 @@
 <template>
-    <div class="co">
+    <div class="container">
+        <input v-model="searchingWord" type="text" name="find" placeholder="Find">
+        <button @click.prevent="findGym()">search</button>
+        <router-link class="back" to="/">back</router-link>
         <ul id="gyms" class="gyms"></ul>
     </div>
 </template>
@@ -9,6 +12,7 @@ export default {
     data() {
         return {
             gyms: [],
+            searchingWord: ''
         }
     },
     methods: {
@@ -30,19 +34,36 @@ export default {
                 }
                 this.gyms = results
                 const gymList = document.getElementById('gyms')
-                console.log(gymList)
 
                 for(let i = 0; i < this.gyms.length; i++) {
                     const newLi = document.createElement('li')
-                    newLi.innerHTML = `<h1>Nazwa: ${this.gyms[i].gymName}<h1><h2>Miasto: ${this.gyms[i].city}, ${this.gyms[i].gymStreet}</h2><h2>Miasto: ${this.gyms[i].mainCoach}</h2><p>${this.gyms[i].description}</p>`
-                    // newLi.innerHTML = this.gyms[i].gymName
-                    console.log(newLi)
+                    newLi.innerHTML = `<h1>Nazwa: ${this.gyms[i].gymName}<h1><h2>Miasto: ${this.gyms[i].city}, ${this.gyms[i].gymStreet}</h2><h2>Główny trener: ${this.gyms[i].mainCoach}</h2><p>${this.gyms[i].description}</p>`
                     gymList.appendChild(newLi)
                 }
                 
 
 
             })
+        },
+        findGym() {
+            let newArr = []
+            for (let i = 0; i < this.gyms.length; i++) {
+                if (this.gyms[i].gymName === this.searchingWord) {
+                    newArr.push(this.gyms[i])
+                }
+                if (this.gyms[i].city === this.searchingWord) {
+                    newArr.push(this.gyms[i])
+                }
+                if (this.gyms[i].gymStreet === this.searchingWord) {
+                    newArr.push(this.gyms[i])
+                }
+                if (this.gyms[i].mainCoach === this.searchingWord) {
+                    newArr.push(this.gyms[i])
+                }
+            }
+            console.log(newArr)
+            // w nowej tablicy znajdują się tylko wyszukane elementy z tablicy gyms teraz muszę usunąć wszystkie elementy li
+            // i stworzyc nowe na bazie newArr
         }
     },
     mounted() {
@@ -50,3 +71,12 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+button {
+    margin: 0 auto;
+    height: 40px;
+
+}
+</style>
